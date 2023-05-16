@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsla(238deg, 40%, 52%, 0.078);
+}
+
+p {
+  font-size: 16px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.main_containter {
+  width: 60%;
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inner_control {
+  display: flex;
+  width: 30px;
+  flex-direction: column;
+  background-color: hsla(238deg, 40%, 52%, 0.078);
+  align-items: center;
+  justify-content: center;
+  row-gap: 15px;
+  padding: 6px;
+}
+.inner_control button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.inner_control p {
+  color: hsl(238deg, 40%, 52%);
+  font-weight: 700;
+}
+
+.individual_comment {
+  display: flex;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+  padding: 20px;
+  background-color: hwb(0 100% 0%);
+}
+
+.header {
+  display: flex;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+  align-items: center;
+}
+.header img {
+  width: 30px;
+  height: 30px;
+}
+.header .time_range {
+  font-size: 11px;
+  color: hsl(228deg, 5%, 78%);
+}
+.header .Name {
+  font-weight: 600;
+}
+
+.reply_comment {
+  display: flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  align-items: center;
+  margin-left: auto;
+}
+.reply_comment img {
+  width: 15px;
+  height: 15px;
+}
+.reply_comment .reply_button {
+  color: hsl(238deg, 40%, 52%);
+  font-weight: 700;
+  font-size: 13px;
+}
+.reply_comment .reply_button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.details {
+  display: flex;
+  width: 100%;
+}
+
+.main_info {
+  margin-top: 7px;
+  font-size: 14px;
+  line-height: 1.2;
+  color: rgba(128, 128, 128, 0.882);
+}
+
+.Comments {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  background-color: transparent;
+}
+
+.replies {
+  margin-left: 35px;
+  padding-left: 15px;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: rgba(128, 128, 128, 0.171);
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}/*# sourceMappingURL=main.css.map */

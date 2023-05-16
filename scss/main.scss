@@ -1,0 +1,141 @@
+$background-color: hsla(238, 40%, 52%, 0.078);
+$paragraph-size: 16px;
+$time-range-color: hsla(220, 4%, 85%, 0.399);
+$myMargin-auto: auto;
+$primary-textcolor: hsl(238, 40%, 52%);
+$individual_backgroundcolor : hwb(0 100% 0%);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: $background-color;
+    
+}
+
+p{
+    font-size: $paragraph-size;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.main_containter{
+    width: 60%;
+    margin-top: 2%;
+    margin-left: $myMargin-auto;
+    margin-right: $myMargin-auto;
+}
+
+.inner_control{
+    display: flex;
+    width: 30px;
+    
+    flex-direction: column;
+    background-color: $background-color ;
+    align-items: center;
+    justify-content: center;
+    row-gap: 15px;
+    padding: 6px;
+
+
+    button{
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    p{
+        color: $primary-textcolor;
+        font-weight: 700;
+    }
+
+}
+
+.individual_comment{
+    display: flex;
+    column-gap: 15px;
+    padding: 20px;
+    background-color: $individual_backgroundcolor;
+}
+
+.header{
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+
+    img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .time_range{
+        font-size: 11px;
+        color: hsl(228, 5%, 78%);
+    }
+
+    .Name{
+        font-weight: 600;
+    }
+
+}
+
+.reply_comment{
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    margin-left: $myMargin-auto;
+
+    img{
+        width: 15px;
+        height: 15px;
+    }
+
+    .reply_button{
+        color: $primary-textcolor;
+        font-weight: 700;
+        font-size: 13px;
+
+    }
+
+    .reply_button:hover{
+        cursor: pointer;
+        opacity: 0.7;
+    }
+   
+}
+
+.details{
+    display: flex;
+    width: 100%;
+   
+}
+
+.main_info{
+    margin-top: 7px;
+    font-size: 14px;
+    line-height: 1.2;
+    color: rgba(128, 128, 128, 0.882);
+}
+
+.Comments{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    background-color: transparent;
+}
+
+.replies{
+   
+    margin-left: 35px;
+    padding-left: 15px;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color:rgba(128, 128, 128, 0.171) ;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    
+    
+}
