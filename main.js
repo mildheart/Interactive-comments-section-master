@@ -1,8 +1,8 @@
 const commentObject = {
     "currentUser": {
       "image": { 
-        "png": "../images/avatars/image-juliusomo.png",
-        "webp": "../images/avatars/image-juliusomo.webp"
+        "png": "images/avatars/image-juliusomo.png",
+        "webp": "images/avatars/image-juliusomo.webp"
       },
       "username": "juliusomo"
     },
@@ -14,8 +14,8 @@ const commentObject = {
         "score": 12,
         "user": {
           "image": { 
-            "png": "../images/avatars/image-amyrobson.png",
-            "webp": "../images/avatars/image-amyrobson.webp"
+            "png": "images/avatars/image-amyrobson.png",
+            "webp": "images/avatars/image-amyrobson.webp"
           },
           "username": "amyrobson"
         },
@@ -28,8 +28,8 @@ const commentObject = {
         "score": 5,
         "user": {
           "image": { 
-            "png": "../images/avatars/image-maxblagun.png",
-            "webp": "../images/avatars/image-maxblagun.webp"
+            "png": "images/avatars/image-maxblagun.png",
+            "webp": "images/avatars/image-maxblagun.webp"
           },
           "username": "maxblagun"
         },
@@ -42,8 +42,8 @@ const commentObject = {
             "replyingTo": "maxblagun",
             "user": {
               "image": { 
-                "png": "../images/avatars/image-ramsesmiron.png",
-                "webp": "../images/avatars/image-ramsesmiron.webp"
+                "png": "images/avatars/image-ramsesmiron.png",
+                "webp": "images/avatars/image-ramsesmiron.webp"
               },
               "username": "ramsesmiron"
             }
@@ -56,8 +56,8 @@ const commentObject = {
             "replyingTo": "ramsesmiron",
             "user": {
               "image": { 
-                "png": "../images/avatars/image-juliusomo.png",
-                "webp": "../images/avatars/image-juliusomo.webp"
+                "png": "images/avatars/image-juliusomo.png",
+                "webp": "images/avatars/image-juliusomo.webp"
               },
               "username": "juliusomo"
             }
@@ -119,9 +119,9 @@ const commentObject = {
     return `
     <div class="individual_comment">
       <div class="inner_control">
-        <button><img src="../images/icon-plus.svg" alt="Plus button"></button>
+        <button><img src="images/icon-plus.svg" alt="Plus button"></button>
         <p class= "score">${object_score}</p>
-        <button><img src="../images/icon-minus.svg" alt="Minus button"></button>
+        <button><img src="images/icon-minus.svg" alt="Minus button"></button>
       </div>
       <div class="out_container">
           <div class="details">
