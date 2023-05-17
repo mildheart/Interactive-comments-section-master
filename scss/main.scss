@@ -31,13 +31,13 @@ p{
 .inner_control{
     display: flex;
     width: 30px;
-    
+    height: 20px;
     flex-direction: column;
     background-color: $background-color ;
     align-items: center;
-    justify-content: center;
-    row-gap: 15px;
-    padding: 6px;
+    justify-content: space-evenly;
+    
+    padding: 8px;
 
 
     button{
