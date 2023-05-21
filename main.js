@@ -73,16 +73,17 @@ const commentObject = {
 
   function settingUp(){
 
-    section_container.innerHTML = getForm();
+    section_container.innerHTML = setOutSection();
 
     let comment_container = document.querySelector('.Comments');
 
     comment_container.innerHTML += '';
+    let current_user = commentObject.currentUser.username;
 
     for(let i=0; i < commentObject.comments.length; i++)
     {
       temp_user = commentObject.comments[i];
-      comment_container.innerHTML += individual_Comment(temp_user.user.image.png,temp_user.score,temp_user.user.username,temp_user.createdAt,temp_user.content);
+      comment_container.innerHTML += individual_Comment(isCurrentUser(current_user,temp_user.user.username),temp_user.user.image.png,temp_user.score,temp_user.user.username,temp_user.createdAt,temp_user.content,"");
       
       if(temp_user.replies.length > 0){
 
@@ -96,7 +97,7 @@ const commentObject = {
         for(let i = 0; i < temp_user.replies.length; i++ )
         {
           let reply_temp_user = temp_user.replies[i];
-          formString += individual_Comment(reply_temp_user.user.image.png,reply_temp_user.score,reply_temp_user.user.username,reply_temp_user.createdAt,reply_temp_user.content);
+          formString += individual_Comment(isCurrentUser(current_user,reply_temp_user.user.username),reply_temp_user.user.image.png,reply_temp_user.score,reply_temp_user.user.username,reply_temp_user.createdAt,reply_temp_user.content,("@"+reply_temp_user.replyingTo + " "));
         }
 
         reply_container.innerHTML = formString;
@@ -111,11 +112,38 @@ const commentObject = {
     settingUp();
   })
 
-  function getForm(){
+  function setOutSection(){
     return `<section class="Comments"></section>`;
   }
 
-  function individual_Comment(profile_pic,object_score,user,period,content){
+  function individual_Comment(isCurrentUser,profile_pic,object_score,user,period,content,username){
+
+    if(isCurrentUser){
+      return `
+      <div class="individual_comment">
+        <div class="inner_control">
+          <button><img src="images/icon-plus.svg" alt="Plus button"></button>
+          <p class= "score">${object_score}</p>
+          <button><img src="images/icon-minus.svg" alt="Minus button"></button>
+        </div>
+        <div class="out_container">
+            <div class="details">
+                <div class="header">
+                    <img src=${profile_pic} alt="profile picture" class="profile_pic">
+                    <p class="Name">${user}</p> 
+                    <p class="you_tag">you</p>
+                    <p class="time_range">${period}</p>
+                </div>
+                <div class="reply_comment">
+                   <button class="current_user_DelButton same_feature"><img src="images/icon-delete.svg" alt="Delete Button"> Delete </button>
+                   <button class="current_user_EditButton same_feature"><img src="images/icon-edit.svg" alt="Edit Button"> Edit</button>
+                </div>
+            </div>
+            <p class="main_info"><span class="Replied_user">${username}</span>${content}</p>
+      </div> 
+  </div>`;
+    }
+
     return `
     <div class="individual_comment">
       <div class="inner_control">
@@ -127,25 +155,31 @@ const commentObject = {
           <div class="details">
               <div class="header">
                   <img src=${profile_pic} alt="profile picture" class="profile_pic">
-                  <p class="Name">${user}</p>
-                  <p class="you"></p>
+                  <p class="Name">${user}</p> 
                   <p class="time_range">${period}</p>
               </div>
               <div class="reply_comment">
-                  <img src="../images/icon-reply.svg" alt="">
-                  <p class="reply_button">
+                  <img src="images/icon-reply.svg" alt="">
+                  <p class="reply_button" onclick="
+                    
+                  ">
                       Reply
                   </p>
               </div>
           </div>
-          <p class="main_info">${content}</p>
+          <p class="main_info"><span class="Replied_user">${username}</span>${content}</p>
     </div> 
-</div>`
+</div>`;
   }
 
   function addReplyDiv(){
     return `<div class="replies"></div>`;
   }
  
-
+function isCurrentUser(currentUser,otherUser){
+  if(currentUser === otherUser){
+    return true
+  }
+  return false;
+}
 

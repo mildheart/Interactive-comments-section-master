@@ -6,6 +6,7 @@
 
 body {
   background-color: hsla(238deg, 40%, 52%, 0.078);
+  padding: 20px;
 }
 
 p {
@@ -26,9 +27,11 @@ p {
   flex-direction: column;
   background-color: hsla(238deg, 40%, 52%, 0.078);
   align-items: center;
-  justify-content: center;
-  row-gap: 15px;
-  padding: 6px;
+  justify-content: space-evenly;
+  align-self: flex-start;
+  padding: 8px;
+  row-gap: 7x;
+  border-radius: 4px;
 }
 .inner_control button {
   border: none;
@@ -46,6 +49,7 @@ p {
        column-gap: 15px;
   padding: 20px;
   background-color: hwb(0 100% 0%);
+  border-radius: 8px;
 }
 
 .header {
@@ -107,12 +111,84 @@ p {
 }
 
 .replies {
-  margin-left: 35px;
-  padding-left: 15px;
+  margin-left: 20px;
+  padding-left: 20px;
   border-left-width: 1px;
   border-left-style: solid;
   border-left-color: rgba(128, 128, 128, 0.171);
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+}
+
+.Replied_user {
+  color: hsl(238deg, 40%, 52%);
+  font-weight: 700;
+}
+
+.same_feature {
+  border: none;
+  background-color: hwb(0 100% 0%);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.same_feature img {
+  height: 10px;
+  width: 10px;
+}
+
+.current_user_DelButton {
+  color: red;
+}
+
+.current_user_EditButton {
+  color: hsl(238deg, 40%, 52%);
+}
+
+.you_tag {
+  padding: 2px 4px;
+  color: white;
+  background-color: hsl(238deg, 40%, 52%);
+  font-size: 13px;
+}
+.you_tag p {
+  padding: 0;
+  margin: 0;
+}
+
+.current_reply_div {
+  display: flex;
+  background-color: hwb(0 100% 0%);
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+  width: 100%;
+  padding: 20px;
+}
+.current_reply_div .profile_pic {
+  width: 40px;
+  height: 40px;
+  align-self: flex-start;
+}
+.current_reply_div textarea {
+  padding: 15px;
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: 8px;
+}
+.current_reply_div .replyButton {
+  align-self: flex-start;
+  padding: 10px 25px;
+  border: none;
+  background-color: hsl(238deg, 40%, 52%);
+  color: hwb(0 100% 0%);
+  border-radius: 6px;
+  font-family: inherit;
+}
+.current_reply_div .replyButton:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+.current_reply_div .replyButton:active {
+  opacity: 0.9;
 }/*# sourceMappingURL=main.css.map */

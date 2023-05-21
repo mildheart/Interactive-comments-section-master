@@ -13,6 +13,7 @@ $individual_backgroundcolor : hwb(0 100% 0%);
 
 body{
     background-color: $background-color;
+    padding: 20px;
     
 }
 
@@ -31,13 +32,14 @@ p{
 .inner_control{
     display: flex;
     width: 30px;
-    height: 20px;
     flex-direction: column;
     background-color: $background-color ;
     align-items: center;
     justify-content: space-evenly;
-    
+    align-self: flex-start;
     padding: 8px;
+    row-gap: 7x;
+    border-radius: 4px;
 
 
     button{
@@ -58,6 +60,7 @@ p{
     column-gap: 15px;
     padding: 20px;
     background-color: $individual_backgroundcolor;
+    border-radius: 8px;
 }
 
 .header{
@@ -128,8 +131,8 @@ p{
 
 .replies{
    
-    margin-left: 35px;
-    padding-left: 15px;
+    margin-left: 20px;
+    padding-left: 20px;
     border-left-width: 1px;
     border-left-style: solid;
     border-left-color:rgba(128, 128, 128, 0.171) ;
@@ -138,4 +141,85 @@ p{
     row-gap: 10px;
     
     
+}
+
+.Replied_user{
+    color: $primary-textcolor;
+    font-weight: 700;
+}
+
+.same_feature{
+    border: none;
+    background-color: $individual_backgroundcolor;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    
+    img{
+        height: 10px;
+        width: 10px;
+    }
+
+}
+
+.current_user_DelButton{
+    color: red;
+}
+
+.current_user_EditButton{
+    color: $primary-textcolor;
+}
+
+.you_tag{
+    p{
+        padding: 0;
+        margin: 0;
+    }
+
+    padding: 2px 4px;
+    color: white;
+    background-color: $primary-textcolor;
+    font-size: 13px;
+}
+
+.current_reply_div{
+    display: flex;
+    background-color: $individual_backgroundcolor;
+    column-gap: 8px;
+    width: 100%;
+    padding: 20px;
+    .profile_pic{
+        width: 40px;
+        height: 40px;
+        align-self: flex-start;
+    }
+
+   textarea{
+        padding:15px;
+        font-family: inherit;
+        font-size: inherit;
+        border-radius: 8px;
+
+       
+   }
+
+
+    .replyButton{
+        align-self: flex-start;
+        padding: 10px 25px;
+        border: none;
+        background-color: $primary-textcolor;
+        color: $individual_backgroundcolor;
+        border-radius: 6px;
+        font-family: inherit;
+        
+        &:hover{
+            opacity: 0.7;
+            cursor: pointer;
+        }
+
+        &:active{
+            opacity: 0.9;
+        }
+    }
 }
