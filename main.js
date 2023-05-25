@@ -198,11 +198,18 @@ function isCurrentUser(currentUser,otherUser){
 function replyUser(id, Evt){
 
   let getReplyButton = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
-  console.log(event.target.parentElement.parentElement.parentElement.parentElement);
+  let userName = event.target.parentElement.parentElement.parentElement.querySelector('.Name');
+
+  console.log(userName.textContent);
   let textAreaDiv = getReplyButton.querySelector('.current_reply_div');
 
+  
+  //userName.textContent
   if(!textAreaDiv.classList.contains('visibility')){
     textAreaDiv.classList.add('visibility');
+    let textarea = textAreaDiv.querySelector('textarea');
+
+    textarea.textContent += "@"+ userName.textContent;
   }
  
   
