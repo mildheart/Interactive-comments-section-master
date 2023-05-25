@@ -91,10 +91,10 @@ const commentObject = {
         let out_container =document.getElementById(temp_user.id);
         out_container.innerHTML += addReplyDiv(temp_user.id);
         //let getIndex = '#' + i;
-       console.log('reply'+i);
+      // console.log('reply'+i);
         let reply_container = document.getElementById('replyContainer'+temp_user.id);
 
-        console.log(reply_container);
+        //console.log(reply_container);
 
         let formString = ''; 
         
@@ -166,7 +166,7 @@ const commentObject = {
                 <div class="reply_comment">
                     <img src="images/icon-reply.svg" alt="">
                     <p class="reply_button" onclick="
-                        replyUser(${id})
+                        replyUser(${id}, event)
                     ">
                         Reply
                     </p>
@@ -195,27 +195,17 @@ function isCurrentUser(currentUser,otherUser){
 }
 
 
-function replyUser(id){
-/** 
- * 
-  if(check.length() > 0){
-      for(let i = 0; i < check.length(); i++)
-      {
-        if(check[i].id == id){
-           if(!check[i].state){
-              if(document.getElementById("replyContainer"+id) != null)
-              {
+function replyUser(id, Evt){
 
-              }else{
+  let getReplyButton = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
+  console.log(event.target.parentElement.parentElement.parentElement.parentElement);
+  let textAreaDiv = getReplyButton.querySelector('.current_reply_div');
 
-              }
-           }
-        }
-      }
+  if(!textAreaDiv.classList.contains('visibility')){
+    textAreaDiv.classList.add('visibility');
   }
+ 
   
-*/
-  let 
 
 }
 
