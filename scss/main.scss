@@ -122,7 +122,7 @@ p{
     color: rgba(128, 128, 128, 0.882);
 }
 
-.Comments{
+.Comments,.out_container{
     display: flex;
     flex-direction: column;
     row-gap: 10px;
@@ -223,3 +223,12 @@ p{
         }
     }
 }
+
+.hidden{
+    display: none;
+}
+
+.visibility{
+    display: block;
+}
+

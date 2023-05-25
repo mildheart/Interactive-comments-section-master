@@ -70,6 +70,7 @@ const commentObject = {
   
 
   let section_container = document.querySelector('.main_containter');
+  let check = [];
 
   function settingUp(){
 
@@ -83,44 +84,47 @@ const commentObject = {
     for(let i=0; i < commentObject.comments.length; i++)
     {
       temp_user = commentObject.comments[i];
-      comment_container.innerHTML += individual_Comment(isCurrentUser(current_user,temp_user.user.username),temp_user.user.image.png,temp_user.score,temp_user.user.username,temp_user.createdAt,temp_user.content,"");
+      comment_container.innerHTML += individual_Comment(isCurrentUser(current_user,temp_user.user.username),temp_user.user.image.png,temp_user.score,temp_user.user.username,temp_user.createdAt,temp_user.content,"",temp_user.id);
       
       if(temp_user.replies.length > 0){
 
-        comment_container.innerHTML += addReplyDiv();
+        let out_container =document.getElementById(temp_user.id);
+        out_container.innerHTML += addReplyDiv(temp_user.id);
+        //let getIndex = '#' + i;
+       console.log('reply'+i);
+        let reply_container = document.getElementById('replyContainer'+temp_user.id);
 
-        let reply_container = document.querySelector('.replies');
+        console.log(reply_container);
 
         let formString = ''; 
         
 
-        for(let i = 0; i < temp_user.replies.length; i++ )
+        for(let n = 0; n < temp_user.replies.length; n++ )
         {
-          let reply_temp_user = temp_user.replies[i];
-          formString += individual_Comment(isCurrentUser(current_user,reply_temp_user.user.username),reply_temp_user.user.image.png,reply_temp_user.score,reply_temp_user.user.username,reply_temp_user.createdAt,reply_temp_user.content,("@"+reply_temp_user.replyingTo + " "));
+          let reply_temp_user = temp_user.replies[n];
+          formString += individual_Comment(isCurrentUser(current_user,reply_temp_user.user.username),reply_temp_user.user.image.png,reply_temp_user.score,reply_temp_user.user.username,reply_temp_user.createdAt,reply_temp_user.content,("@"+reply_temp_user.replyingTo + " "),reply_temp_user.id);
         }
 
-        reply_container.innerHTML = formString;
+        reply_container.innerHTML += formString;
 
       }
 
     }
 
+   
   }
 
-  window.addEventListener('DOMContentLoaded',function(){
-    settingUp();
-  })
+  window.addEventListener('DOMContentLoaded',settingUp)
 
   function setOutSection(){
     return `<section class="Comments"></section>`;
   }
 
-  function individual_Comment(isCurrentUser,profile_pic,object_score,user,period,content,username){
+  function individual_Comment(isCurrentUser,profile_pic,object_score,user,period,content,username,id){
 
     if(isCurrentUser){
       return `
-      <div class="individual_comment">
+      <div class="individual_comment" id="currentUser${id}">
         <div class="inner_control">
           <button><img src="images/icon-plus.svg" alt="Plus button"></button>
           <p class= "score">${object_score}</p>
@@ -145,35 +149,42 @@ const commentObject = {
     }
 
     return `
-    <div class="individual_comment">
-      <div class="inner_control">
-        <button><img src="images/icon-plus.svg" alt="Plus button"></button>
-        <p class= "score">${object_score}</p>
-        <button><img src="images/icon-minus.svg" alt="Minus button"></button>
-      </div>
-      <div class="out_container">
-          <div class="details">
-              <div class="header">
-                  <img src=${profile_pic} alt="profile picture" class="profile_pic">
-                  <p class="Name">${user}</p> 
-                  <p class="time_range">${period}</p>
-              </div>
-              <div class="reply_comment">
-                  <img src="images/icon-reply.svg" alt="">
-                  <p class="reply_button" onclick="
-                    
-                  ">
-                      Reply
-                  </p>
-              </div>
-          </div>
-          <p class="main_info"><span class="Replied_user">${username}</span>${content}</p>
-    </div> 
+    <div class="out_container" id="${id}">
+      <div class="individual_comment">
+        <div class="inner_control">
+          <button><img src="images/icon-plus.svg" alt="Plus button"></button>
+          <p class= "score">${object_score}</p>
+          <button><img src="images/icon-minus.svg" alt="Minus button"></button>
+        </div>
+        <div class="sub_container">
+            <div class="details">
+                <div class="header">
+                    <img src=${profile_pic} alt="profile picture" class="profile_pic">
+                    <p class="Name">${user}</p> 
+                    <p class="time_range">${period}</p>
+                </div>
+                <div class="reply_comment">
+                    <img src="images/icon-reply.svg" alt="">
+                    <p class="reply_button" onclick="
+                        replyUser(${id})
+                    ">
+                        Reply
+                    </p>
+                </div>
+            </div>
+            <p class="main_info"><span class="Replied_user">${username}</span>${content}</p>
+      </div> 
+  </div>
+    <div class="current_reply_div hidden">
+    <img src='images/avatars/image-juliusomo.png' alt="profile picture" class="profile_pic">
+    <textarea cols="50" rows="3" placeholder="reply message"  class="textarea" ></textarea>
+    <button class="replyButton">REPLY</button>
+  </div>
 </div>`;
   }
 
-  function addReplyDiv(){
-    return `<div class="replies"></div>`;
+  function addReplyDiv(id){
+    return `<div class="replies" id = "replyContainer${id}" ></div>`;
   }
  
 function isCurrentUser(currentUser,otherUser){
@@ -181,5 +192,41 @@ function isCurrentUser(currentUser,otherUser){
     return true
   }
   return false;
+}
+
+
+function replyUser(id){
+/** 
+ * 
+  if(check.length() > 0){
+      for(let i = 0; i < check.length(); i++)
+      {
+        if(check[i].id == id){
+           if(!check[i].state){
+              if(document.getElementById("replyContainer"+id) != null)
+              {
+
+              }else{
+
+              }
+           }
+        }
+      }
+  }
+  
+*/
+  let 
+
+}
+
+
+function currentUserReplyDiv(){
+  return `
+  <div class="current_reply_div hidden">
+  <img src='images/avatars/image-juliusomo.png' alt="profile picture" class="profile_pic">
+   <textarea cols="50" rows="3" placeholder="reply message"  class="textarea" ></textarea>
+   <button class="replyButton">REPLY</button>
+</div>
+  `;
 }
 
