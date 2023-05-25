@@ -199,6 +199,7 @@ p{
         font-family: inherit;
         font-size: inherit;
         border-radius: 8px;
+        width: 100%;
 
        
    }
@@ -229,6 +230,6 @@ p{
 }
 
 .visibility{
-    display: block;
+    display: flex;
 }
 
