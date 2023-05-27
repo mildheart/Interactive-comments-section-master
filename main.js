@@ -212,31 +212,39 @@ function replyUser(id, Evt){
     let getId = getReplyButton.getAttribute('id');
 
     console.log(getId);
-    textarea.textContent += "@"+ userName.textContent;
+    textarea.textContent = "@"+ userName.textContent;
 
     reply_btn.addEventListener('click', function(){
-        if(('' + textarea.textContent).trim().length > ('@'+userName.textContent).length && ('' + textarea.textContent).contains('@'+userName.textContent)){
-            switch (getId) {
-              case 1:
-                let UserObject = {
-                  "id":incrementId(),
-                  "content": textarea.textContent,
-                  "createdAt": "1 week ago",
-                  "score": getRandomScore(),
-                  "replyingTo": userName.textContent,
-                  "user": {
-                    "image": { 
-                      "png": "images/avatars/image-juliusomo.png",
-                      "webp": "images/avatars/image-juliusomo.webp"
-                    },
-                    "username": "juliusomo"
-                  }
-                }
-                break;
-            
-              default:
-                break;
-            }
+      
+      console.log(('' + textarea.value));
+      console.log(('@'+userName.textContent));
+      console.log(('' + textarea.value).includes('@'+userName.textContent))
+        if(('' + textarea.value).trim().length > ('@'+userName.textContent).length && ('' + textarea.value).includes('@'+userName.textContent)){
+          console.log('am inside id is ' + getId);
+           if(getId === '1'){
+            console.log(getRandomDay());
+            let UserObject = {
+              "id":incrementId(),
+              "content": textarea.value,
+              "createdAt": getRandomWeek(),
+              "score": getRandomScore(),
+              "replyingTo": userName.textContent,
+              "user": {
+                "image": { 
+                  "png": "images/avatars/image-juliusomo.png",
+                  "webp": "images/avatars/image-juliusomo.webp"
+                },
+                "username": "juliusomo"
+              }
+            };
+            console.log(getId);
+            console.log(UserObject);
+            commentObject.comments[getId].replies.push(UserObject);
+
+           }
+        }
+        else {
+          console.log('am not inside.');
         }
     });
 
@@ -264,7 +272,19 @@ function incrementId(){
       max_id = commentObject.comments[i].replies[n].id;
     }    
   }
-  return max_id++;
+  max_id += 1;
+  return max_id ;
+}
+
+function getRandomWeek(){
+  let selected = Math.floor(Math.random() * 3); 
+  return '' + (selected == 1 ?  selected+' week ago' : selected+ ' weeks ago');
+}
+
+function getRandomDay(){
+  
+  let selected = Math.floor(Math.random() * 6); 
+  return '' + (selected == 1 ? selected+' day ago' : selected+' days ago');
 }
 
 
