@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: hsla(238, 40%, 52%, 0.078);
+  background-color: hsla(238deg, 40%, 52%, 0.078);
   padding: 20px;
 }
 
@@ -25,7 +25,7 @@ p {
   display: flex;
   width: 30px;
   flex-direction: column;
-  background-color: hsla(238, 40%, 52%, 0.078);
+  background-color: hsla(238deg, 40%, 52%, 0.078);
   align-items: center;
   justify-content: space-evenly;
   align-self: flex-start;
@@ -39,7 +39,7 @@ p {
   cursor: pointer;
 }
 .inner_control p {
-  color: hsl(238, 40%, 52%);
+  color: hsl(238deg, 40%, 52%);
   font-weight: 700;
 }
 
@@ -64,7 +64,7 @@ p {
 }
 .header .time_range {
   font-size: 11px;
-  color: hsl(228, 5%, 78%);
+  color: hsl(228deg, 5%, 78%);
 }
 .header .Name {
   font-weight: 600;
@@ -82,7 +82,7 @@ p {
   height: 15px;
 }
 .reply_comment .reply_button {
-  color: hsl(238, 40%, 52%);
+  color: hsl(238deg, 40%, 52%);
   font-weight: 700;
   font-size: 13px;
 }
@@ -122,7 +122,7 @@ p {
 }
 
 .Replied_user {
-  color: hsl(238, 40%, 52%);
+  color: hsl(238deg, 40%, 52%);
   font-weight: 700;
 }
 
@@ -143,13 +143,13 @@ p {
 }
 
 .current_user_EditButton {
-  color: hsl(238, 40%, 52%);
+  color: hsl(238deg, 40%, 52%);
 }
 
 .you_tag {
   padding: 2px 4px;
   color: white;
-  background-color: hsl(238, 40%, 52%);
+  background-color: hsl(238deg, 40%, 52%);
   font-size: 13px;
 }
 .you_tag p {
@@ -176,12 +176,13 @@ p {
   font-size: inherit;
   border-radius: 8px;
   width: 100%;
+  resize: none;
 }
 .current_reply_div .replyButton {
   align-self: flex-start;
   padding: 10px 25px;
   border: none;
-  background-color: hsl(238, 40%, 52%);
+  background-color: hsl(238deg, 40%, 52%);
   color: hwb(0 100% 0%);
   border-radius: 6px;
   font-family: inherit;

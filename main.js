@@ -200,7 +200,7 @@ function replyUser(id, Evt){
   let getReplyButton = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
   let userName = event.target.parentElement.parentElement.parentElement.querySelector('.Name');
 
-  console.log(userName.textContent);
+  console.log(getReplyButton);
   let textAreaDiv = getReplyButton.querySelector('.current_reply_div');
 
   
@@ -208,22 +208,64 @@ function replyUser(id, Evt){
   if(!textAreaDiv.classList.contains('visibility')){
     textAreaDiv.classList.add('visibility');
     let textarea = textAreaDiv.querySelector('textarea');
+    let reply_btn = textAreaDiv.querySelector('.replyButton');
+    let getId = getReplyButton.getAttribute('id');
 
+    console.log(getId);
     textarea.textContent += "@"+ userName.textContent;
+
+    reply_btn.addEventListener('click', function(){
+        if(('' + textarea.textContent).trim().length > ('@'+userName.textContent).length && ('' + textarea.textContent).contains('@'+userName.textContent)){
+            switch (getId) {
+              case 1:
+                let UserObject = {
+                  "id":incrementId(),
+                  "content": textarea.textContent,
+                  "createdAt": "1 week ago",
+                  "score": getRandomScore(),
+                  "replyingTo": userName.textContent,
+                  "user": {
+                    "image": { 
+                      "png": "images/avatars/image-juliusomo.png",
+                      "webp": "images/avatars/image-juliusomo.webp"
+                    },
+                    "username": "juliusomo"
+                  }
+                }
+                break;
+            
+              default:
+                break;
+            }
+        }
+    });
+
   }
  
   
 
 }
 
-
-function currentUserReplyDiv(){
-  return `
-  <div class="current_reply_div hidden">
-  <img src='images/avatars/image-juliusomo.png' alt="profile picture" class="profile_pic">
-   <textarea cols="50" rows="3" placeholder="reply message"  class="textarea" ></textarea>
-   <button class="replyButton">REPLY</button>
-</div>
-  `;
+function getRandomScore()
+{
+  return Math.floor(Math.random() * 20);
 }
+
+function incrementId(){
+  let max_id = 0;
+
+  for(let i =0; i < commentObject.comments.length; i++)
+  {
+    if(commentObject.comments[i].id > max_id)
+        max_id = commentObject.comments[i].id;
+     
+    for(let n=0; n  < commentObject.comments[i].replies.length; n++){
+      if(commentObject.comments[i].replies[n].id > max_id)
+      max_id = commentObject.comments[i].replies[n].id;
+    }    
+  }
+  return max_id++;
+}
+
+
 
