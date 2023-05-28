@@ -61,6 +61,7 @@ p{
     padding: 20px;
     background-color: $individual_backgroundcolor;
     border-radius: 8px;
+    
 }
 
 .header{
@@ -112,6 +113,7 @@ p{
 .details{
     display: flex;
     width: 100%;
+    
    
 }
 
@@ -127,6 +129,7 @@ p{
     flex-direction: column;
     row-gap: 10px;
     background-color: transparent;
+    width: 100%;
 }
 
 .replies{
@@ -139,6 +142,7 @@ p{
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+   
     
     
 }

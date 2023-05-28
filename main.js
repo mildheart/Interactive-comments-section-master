@@ -70,7 +70,6 @@ const commentObject = {
   
 
   let section_container = document.querySelector('.main_containter');
-  let check = [];
 
   function settingUp(){
 
@@ -212,20 +211,47 @@ function replyUser(id, Evt){
     let getId = getReplyButton.getAttribute('id');
 
     console.log(getId);
-    textarea.textContent = "@"+ userName.textContent;
+    textarea.value = "@"+ userName.textContent;
 
     reply_btn.addEventListener('click', function(){
       
-      console.log(('' + textarea.value));
-      console.log(('@'+userName.textContent));
-      console.log(('' + textarea.value).includes('@'+userName.textContent))
         if(('' + textarea.value).trim().length > ('@'+userName.textContent).length && ('' + textarea.value).includes('@'+userName.textContent)){
-          console.log('am inside id is ' + getId);
+          
            if(getId === '1'){
-            console.log(getRandomDay());
+           
+            let content = ('' + textarea.value).substring(('@'+userName.textContent).length+1);
+
             let UserObject = {
               "id":incrementId(),
-              "content": textarea.value,
+              "content": content,
+              "createdAt": getRandomWeek(),
+              "score": getRandomScore(),
+              "replyingTo": userName.textContent,
+              "user": {
+                "image": { 
+                  "png": "images/avatars/image-juliusomo.png",
+                  "webp": "images/avatars/image-juliusomo.webp"
+                },
+                "username": "juliusomo"
+              }
+            };
+            
+            commentObject.comments[0].replies.push(UserObject);
+            textarea.value = ""; 
+            textAreaDiv.classList.remove('visibility');
+            populateReplyDiv(0,getReplyButton,getId)
+            
+           
+
+           }
+           else if(getId === '2'){
+            console.log('am inside id is ' + getId);
+            console.log(getRandomDay());
+            let content = ('' + textarea.value).substring(('@'+userName.textContent).length+1);
+
+            let UserObject = {
+              "id":incrementId(),
+              "content": content,
               "createdAt": getRandomWeek(),
               "score": getRandomScore(),
               "replyingTo": userName.textContent,
@@ -239,13 +265,44 @@ function replyUser(id, Evt){
             };
             console.log(getId);
             console.log(UserObject);
-            commentObject.comments[getId].replies.push(UserObject);
+            commentObject.comments[1].replies.push(UserObject);
+            textarea.value = "";
+            textAreaDiv.classList.remove('visibility');
+            populateReplyDiv(1,getReplyButton,getId)
+            console.log(commentObject);
+
+           
+           }
+           else if (getId === '3'){
+            console.log('am inside id is ' + getId);
+            console.log(getRandomDay());
+            let content = ('' + textarea.value).substring(('@'+userName.textContent).length+1);
+
+            let UserObject = {
+              "id":incrementId(),
+              "content": content,
+              "createdAt": getRandomWeek(),
+              "score": getRandomScore(),
+              "replyingTo": userName.textContent,
+              "user": {
+                "image": { 
+                  "png": "images/avatars/image-juliusomo.png",
+                  "webp": "images/avatars/image-juliusomo.webp"
+                },
+                "username": "juliusomo"
+              }
+            };
+            console.log(getId);
+            console.log(UserObject);
+            commentObject.comments[1].replies.push(UserObject);
+            textarea.value = "";
+            textAreaDiv.classList.remove('visibility');
+            populateReplyDiv(1,getReplyButton,'2');
+            console.log(commentObject);
 
            }
         }
-        else {
-          console.log('am not inside.');
-        }
+        
     });
 
   }
@@ -287,5 +344,39 @@ function getRandomDay(){
   return '' + (selected == 1 ? selected+' day ago' : selected+' days ago');
 }
 
+
+function populateReplyDiv(index,current_reply_div,id){
+
+  let current_user = commentObject.currentUser.username;
+    
+    if(document.getElementById(`replyContainer${id}`) == null){
+      current_reply_div.innerHTML += addReplyDiv(id);
+        let temp = document.getElementById(`replyContainer${id}`);
+        let formString = ''; 
+
+        for(let i = 0; i < commentObject.comments[index].replies.length; i++){
+          let reply_temp_user = commentObject.comments[index].replies[i];
+
+          formString += individual_Comment(isCurrentUser(current_user,reply_temp_user.user.username),reply_temp_user.user.image.png,reply_temp_user.score,reply_temp_user.user.username,reply_temp_user.createdAt,reply_temp_user.content,("@"+reply_temp_user.replyingTo + " "),reply_temp_user.id);
+        }
+
+        temp.innerHTML = formString;
+
+    }else{
+
+      let temp = document.getElementById(`replyContainer${id}`);
+      let formString = ''; 
+
+      for(let i = 0; i < commentObject.comments[index].replies.length; i++){
+        let reply_temp_user = commentObject.comments[index].replies[i];
+
+        formString += individual_Comment(isCurrentUser(current_user,reply_temp_user.user.username),reply_temp_user.user.image.png,reply_temp_user.score,reply_temp_user.user.username,reply_temp_user.createdAt,reply_temp_user.content,("@"+reply_temp_user.replyingTo + " "),reply_temp_user.id);
+      }
+
+      temp.innerHTML = formString;
+
+    }
+
+}
 
 
