@@ -199,7 +199,7 @@ function replyUser(id, Evt){
   let getReplyButton = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
   let userName = event.target.parentElement.parentElement.parentElement.querySelector('.Name');
 
-  console.log(getReplyButton);
+  
   let textAreaDiv = getReplyButton.querySelector('.current_reply_div');
 
   
@@ -210,7 +210,7 @@ function replyUser(id, Evt){
     let reply_btn = textAreaDiv.querySelector('.replyButton');
     let getId = getReplyButton.getAttribute('id');
 
-    console.log(getId);
+    
     textarea.value = "@"+ userName.textContent;
 
     reply_btn.addEventListener('click', function(){
@@ -245,8 +245,7 @@ function replyUser(id, Evt){
 
            }
            else if(getId === '2'){
-            console.log('am inside id is ' + getId);
-            console.log(getRandomDay());
+            
             let content = ('' + textarea.value).substring(('@'+userName.textContent).length+1);
 
             let UserObject = {
@@ -263,19 +262,16 @@ function replyUser(id, Evt){
                 "username": "juliusomo"
               }
             };
-            console.log(getId);
-            console.log(UserObject);
+            
             commentObject.comments[1].replies.push(UserObject);
             textarea.value = "";
             textAreaDiv.classList.remove('visibility');
             populateReplyDiv(1,getReplyButton,getId)
-            console.log(commentObject);
+           
 
            
            }
            else if (getId === '3'){
-            console.log('am inside id is ' + getId);
-            console.log(getRandomDay());
             let content = ('' + textarea.value).substring(('@'+userName.textContent).length+1);
 
             let UserObject = {
@@ -292,13 +288,12 @@ function replyUser(id, Evt){
                 "username": "juliusomo"
               }
             };
-            console.log(getId);
-            console.log(UserObject);
+           
             commentObject.comments[1].replies.push(UserObject);
             textarea.value = "";
             textAreaDiv.classList.remove('visibility');
             populateReplyDiv(1,getReplyButton,'2');
-            console.log(commentObject);
+           
 
            }
         }
